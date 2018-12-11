@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MovieNet: The ultimate movie predictor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 jumbotron text-center">
+                <h1>MovieNet</h1>
+                <p>Got successful movie?</p>
+                <p>We have the ultimate movie predictor!!!</p>
+            </div>
+        </div>
+
+        <form>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="well">
+                    <h5>Select Director:</h5>
+                    <select id="selDirector"></select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="well">
+                    <h5>Select Actor 1:</h5>
+                    <select id="selActor1"></select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="well">
+                    <h5>Select Actor 2:</h5>
+                    <select id="selActor2"></select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="well">
+                    <h5>Select Actor 3:</h5>
+                    <select id="selActor3"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="well">
+                    <h5>Select Content Rating:</h5>
+                    <select id="selCR"></select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="well">
+                    <h5>Select Duration:</h5>
+                    <select id="selDuration">
+                        <option value="60">60 min (1 hr)</option>
+                        <option value="90">90 min (1 hr 30 min)</option>
+                        <option value="120">120 min (2 hrs)</option>
+                        <option value="150">150 min (2 hrs 30 min)</option>
+                        <option value="180">180 min (3 hrs)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="well">
+                    <h5>Enter Budget:</h5>
+                    <input id="inputBudget" />
+                </div>
+            </div>
+
+            <!--<div class="col-md-3">
+                <div class="well">
+                    <h5>Select Actor 3:</h5>
+                    <select id="selActor3"></select>
+                </div>
+            </div>-->
+        </div>
+
+        <div class="row" style="text-align:center;">
+            <button id="buttonPredict" type="submit" class="btn btn-primary btn-lg">Predict</button>
+        </div>
+
+        <div class="row" style="text-align:center;">
+            <br/>
+            <div id="finalPredictMsg" style="display: none;"></div>
+        </div>
+        </form>
+
+    </div>
+
+    <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <!--<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>-->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+</html>
