@@ -27,8 +27,14 @@ def directors():
     """Return a list of all directors."""
     # Query All Directors in the the Database
     data = engine.execute('''SELECT distinct director_name, director_facebook_likes
-                            FROM movie_db order by CAST(director_facebook_likes AS integer) desc limit 10''')
+                            FROM movie_db order by CAST(director_facebook_likes AS integer) desc limit 15''')
     directors = []
+
+    for record in data:
+        directors.append({'name': record[0], 'value': record[1]})
+
+    data = engine.execute('''SELECT distinct director_name, director_facebook_likes
+                                FROM movie_db order by CAST(director_facebook_likes AS integer) asc limit 15''')
 
     for record in data:
         directors.append({'name': record[0], 'value': record[1]})
@@ -41,8 +47,15 @@ def actors_1():
     """Return a list of all actors."""
     # Query All Actors-1 in the the Database
     data = engine.execute('''SELECT distinct actor_1_name, actor_1_facebook_likes
-                            FROM movie_db order by CAST(actor_1_facebook_likes AS integer) desc limit 10''')
+                            FROM movie_db order by CAST(actor_1_facebook_likes AS integer) desc limit 15''')
     actors = []
+
+    for record in data:
+        actors.append({'name': record[0], 'value': record[1]})
+
+    # Query All Actors-1 in the the Database
+    data = engine.execute('''SELECT distinct actor_1_name, actor_1_facebook_likes
+                            FROM movie_db order by CAST(actor_1_facebook_likes AS integer) asc limit 15''')
 
     for record in data:
         actors.append({'name': record[0], 'value': record[1]})
@@ -56,8 +69,14 @@ def actors_2():
     """Return a list of all actors."""
     # Query All Actors-2 in the the Database
     data = engine.execute('''SELECT distinct actor_2_name, actor_2_facebook_likes
-                            FROM movie_db order by CAST(actor_2_facebook_likes AS integer) desc limit 10''')
+                            FROM movie_db order by CAST(actor_2_facebook_likes AS integer) desc limit 15''')
     actors = []
+
+    for record in data:
+        actors.append({'name': record[0], 'value': record[1]})
+
+    data = engine.execute('''SELECT distinct actor_2_name, actor_2_facebook_likes
+                                FROM movie_db order by CAST(actor_2_facebook_likes AS integer) asc limit 15''')
 
     for record in data:
         actors.append({'name': record[0], 'value': record[1]})
@@ -71,8 +90,14 @@ def actors_3():
     """Return a list of all actors."""
     # Query All Actors-3 in the the Database
     data = engine.execute('''SELECT distinct actor_3_name, actor_3_facebook_likes
-                            FROM movie_db order by CAST(actor_3_facebook_likes AS integer) desc limit 10''')
+                            FROM movie_db order by CAST(actor_3_facebook_likes AS integer) desc limit 15''')
     actors = []
+
+    for record in data:
+        actors.append({'name': record[0], 'value': record[1]})
+
+    data = engine.execute('''SELECT distinct actor_3_name, actor_3_facebook_likes
+                                FROM movie_db order by CAST(actor_3_facebook_likes AS integer) asc limit 15''')
 
     for record in data:
         actors.append({'name': record[0], 'value': record[1]})
@@ -111,18 +136,17 @@ def predict(director_likes, actor_1_likes, actor_2_likes, actor_3_likes, cr, dur
     elif cr == 'R':
         content_rating_R = 1
 
-    cast_total_facebook_likes = actor_1_likes + actor_2_likes + actor_3_likes
+    cast_total_facebook_likes = int(actor_1_likes) + int(actor_2_likes) + int(actor_3_likes)
 
     data_dict = {
         'duration': [duration],
         'director_facebook_likes': [director_likes],
-        'actor_3_facebook_likes': [actor_3_likes],
         'actor_1_facebook_likes': [actor_1_likes],
+        'actor_2_facebook_likes': [actor_2_likes],
+        'actor_3_facebook_likes': [actor_3_likes],
         'cast_total_facebook_likes': [cast_total_facebook_likes],
         'facenumber_in_poster': [3],
         'budget': [budget],
-        'actor_2_facebook_likes': [actor_3_likes],
-        'movie_facebook_likes': [50000],
         'content_rating_G': [content_rating_G],
         'content_rating_NC-17': [content_rating_NC_17],
         'content_rating_PG': [content_rating_PG],
@@ -130,15 +154,17 @@ def predict(director_likes, actor_1_likes, actor_2_likes, actor_3_likes, cr, dur
         'content_rating_R': [content_rating_R],
     }
 
+    print(data_dict)
+
     predict_df = pd.DataFrame(data_dict)
 
     final_prediction = model.predict(predict_df)
 
     target_names = {
-        1: "Based on the parameters your IMDB score will be between 0 - 4 (Bad)",
-        2: "Based on the parameters your IMDB score will be between 4 - 6 (OK)",
-        3: "Based on the parameters your IMDB score will be between 6 - 8 (Good)",
-        4: "Based on the parameters your IMDB score will be between 8 - 10 (Excellent)"
+        1: "Based on the parameters your IMDB score will be between 0 - 6 (Bad)",
+        2: "Based on the parameters your IMDB score will be between 6 - 8 (Good)",
+        3: "Based on the parameters your IMDB score will be between 8 - 10 (Excellent)",
+        #4: "Based on the parameters your IMDB score will be between 8 - 10 (Excellent)"
     }
 
     final_data = {

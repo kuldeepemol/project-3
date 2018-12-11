@@ -102,14 +102,14 @@ predictBtnObj.on('click', function() {
     }
 
     d3.json(url).then((data) => {
-        finalPredictMsg.html(data.final_predict_message);
+        finalPredictMsg.html("<strong>"+data.final_predict_message+"</strong>");
         finalPredictMsg.style('display', 'block');
         if (data.final_predict_category == 1) {
             finalPredictMsg.attr("class", "alert alert-danger");
         } else if (data.final_predict_category == 2) {
-            finalPredictMsg.attr("class", "alert alert-warning");
-        } else if (data.final_predict_category == 3) {
             finalPredictMsg.attr("class", "alert alert-info");
+        } else if (data.final_predict_category == 3) {
+            finalPredictMsg.attr("class", "alert alert-success");
         } else if (data.final_predict_category == 4) {
             finalPredictMsg.attr("class", "alert alert-success");
         }

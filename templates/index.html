@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MovieNet: The ultimate movie predictor</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
@@ -14,8 +14,8 @@
         <div class="row">
             <div class="col-md-12 jumbotron text-center">
                 <h1>MovieNet</h1>
-                <p>Got successful movie?</p>
-                <p>We have the ultimate movie predictor!!!</p>
+                <p><strong>Got successful movie?</strong></p>
+                <p><strong>We have the ultimate movie predictor!!!</strong></p>
             </div>
         </div>
 
@@ -87,7 +87,7 @@
 
         <div class="row" style="text-align:center;">
             <br/>
-            <div id="finalPredictMsg" style="display: none;"></div>
+            <div id="finalPredictMsg" style="display: none; font-size: 26px;"></div>
         </div>
         </form>
 
