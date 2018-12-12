@@ -120,8 +120,8 @@ def content_rating():
     return jsonify(content_ratings)
 
 
-@app.route("/predict/<director_likes>/<actor_1_likes>/<actor_2_likes>/<actor_3_likes>/<cr>/<duration>/<budget>")
-def predict(director_likes, actor_1_likes, actor_2_likes, actor_3_likes, cr, duration, budget):
+@app.route("/predict/<director_likes>/<actor_1_likes>/<actor_2_likes>/<actor_3_likes>/<cr>/<duration>/<genre>/<budget>")
+def predict(director_likes, actor_1_likes, actor_2_likes, actor_3_likes, cr, duration, genre, budget):
 
     (content_rating_G, content_rating_NC_17, content_rating_PG, content_rating_PG_13, content_rating_R) = (0, 0, 0, 0, 0)
 

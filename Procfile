@@ -1,0 +1,1 @@
+web: gunicorn imdb-model-app:app
