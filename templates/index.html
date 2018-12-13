@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MovieNet: The ultimate movie predictor</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
@@ -14,8 +14,8 @@
         <div class="row">
             <div class="col-md-12 jumbotron text-center">
                 <h1>MovieNet</h1>
-                <p>Got successful movie?</p>
-                <p>We have the ultimate movie predictor!!!</p>
+                <p><strong>Got successful movie?</strong></p>
+                <p><strong>We have the ultimate movie predictor!!!</strong></p>
             </div>
         </div>
 
@@ -68,6 +68,35 @@
             </div>
             <div class="col-md-3">
                 <div class="well">
+                    <h5>Select Genre:</h5>
+                    <select id="selGenre" multiple="multiple" style="width: 200px;">
+                        <option value="Drama">Drama</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Action">Action</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Adventure">Adventure</option>
+                        <option value="Crime">Crime</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Sci-Fi">Sci-Fi</option>
+                        <option value="Family">Family</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Biography">Biography</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Music">Music</option>
+                        <option value="War">War</option>
+                        <option value="History">History</option>
+                        <option value="Sport">Sport</option>
+                        <option value="Musical">Musical</option>
+                        <option value="Western">Western</option>
+                        <option value="Documentary">Documentary</option>
+                        <option value="Film-Noir">Film-Noir</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="well">
                     <h5>Enter Budget:</h5>
                     <input id="inputBudget" />
                 </div>
@@ -87,7 +116,7 @@
 
         <div class="row" style="text-align:center;">
             <br/>
-            <div id="finalPredictMsg" style="display: none;"></div>
+            <div id="finalPredictMsg" style="display: none; font-size: 26px;"></div>
         </div>
         </form>
 

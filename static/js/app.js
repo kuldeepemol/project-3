@@ -88,8 +88,24 @@ predictBtnObj.on('click', function() {
         var selectId = eachSelect.id;
         var selectValue = eachSelect.value;
         //alert(selectId+" ==> "+selectValue);
-        url = url + selectValue + '/';
+        if (selectId != 'selGenre') {
+            url = url + selectValue + '/';
+        }
     });
+
+    var genreArray = []
+    var genreSel = d3.select('#selGenre').selectAll("option").filter(function(d, i) { return this.selected;});
+    genreSel.nodes().forEach(node => {
+            genreArray.push(node.value);
+    });
+
+    var genreString = genreArray.join(',');
+    if (!genreString) {
+        alert('Please select at least one Genre.')
+        return false;
+    } else {
+        url = url + genreString + '/';
+    }
 
     // Get all Input elements
     var inputBudget = d3.select('#inputBudget');
@@ -102,14 +118,14 @@ predictBtnObj.on('click', function() {
     }
 
     d3.json(url).then((data) => {
-        finalPredictMsg.html(data.final_predict_message);
+        finalPredictMsg.html("<strong>"+data.final_predict_message+"</strong>");
         finalPredictMsg.style('display', 'block');
         if (data.final_predict_category == 1) {
             finalPredictMsg.attr("class", "alert alert-danger");
         } else if (data.final_predict_category == 2) {
-            finalPredictMsg.attr("class", "alert alert-warning");
-        } else if (data.final_predict_category == 3) {
             finalPredictMsg.attr("class", "alert alert-info");
+        } else if (data.final_predict_category == 3) {
+            finalPredictMsg.attr("class", "alert alert-success");
         } else if (data.final_predict_category == 4) {
             finalPredictMsg.attr("class", "alert alert-success");
         }

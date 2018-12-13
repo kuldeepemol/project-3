@@ -1,0 +1,12 @@
+body {
+    background-image: url('/static/Images/background-with-lighting-lamp-crop.png');
+    background-repeat: repeat-x;
+}
+
+.jumbotron {
+    padding-top: 150px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    background-color: inherit;
+
+}
