@@ -88,8 +88,24 @@ predictBtnObj.on('click', function() {
         var selectId = eachSelect.id;
         var selectValue = eachSelect.value;
         //alert(selectId+" ==> "+selectValue);
-        url = url + selectValue + '/';
+        if (selectId != 'selGenre') {
+            url = url + selectValue + '/';
+        }
     });
+
+    var genreArray = []
+    var genreSel = d3.select('#selGenre').selectAll("option").filter(function(d, i) { return this.selected;});
+    genreSel.nodes().forEach(node => {
+            genreArray.push(node.value);
+    });
+
+    var genreString = genreArray.join(',');
+    if (!genreString) {
+        alert('Please select at least one Genre.')
+        return false;
+    } else {
+        url = url + genreString + '/';
+    }
 
     // Get all Input elements
     var inputBudget = d3.select('#inputBudget');
